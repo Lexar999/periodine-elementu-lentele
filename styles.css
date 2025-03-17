@@ -1,0 +1,504 @@
+:root {
+    /* Element type colors based on the image */
+    --alkali-metal: #ff00ff; /* Pink */
+    --alkaline-earth: #9966ff; /* Purple */
+    --transition-metal: #00ccff; /* Light blue */
+    --post-transition-metal: #ff6600; /* Orange */
+    --metalloid: #00ff00; /* Green */
+    --nonmetal: #33ccff; /* Blue */
+    --halogen: #ffff00; /* Yellow */
+    --noble-gas: #ffcc00; /* Gold */
+    --lanthanide: #99ff00; /* Lime green */
+    --actinide: #ff0000; /* Red */
+    --unknown: #e8e8e8;
+    
+    /* Glow colors */
+    --alkali-metal-glow: rgba(255, 0, 255, 0.7);
+    --alkaline-earth-glow: rgba(153, 102, 255, 0.7);
+    --transition-metal-glow: rgba(0, 204, 255, 0.7);
+    --post-transition-metal-glow: rgba(255, 102, 0, 0.7);
+    --metalloid-glow: rgba(0, 255, 0, 0.7);
+    --nonmetal-glow: rgba(51, 204, 255, 0.7);
+    --halogen-glow: rgba(255, 255, 0, 0.7);
+    --noble-gas-glow: rgba(255, 204, 0, 0.7);
+    --lanthanide-glow: rgba(153, 255, 0, 0.7);
+    --actinide-glow: rgba(255, 0, 0, 0.7);
+    --unknown-glow: rgba(232, 232, 232, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none; /* Prevent text selection */
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#printButton {
+    background-color: #333;
+    color: white;
+    border: 2px solid #555;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+#printButton:hover {
+    background-color: #444;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-gap: 3px;
+    max-width: 1600px;
+    width: 95%;
+    margin: 0 auto;
+    flex-grow: 1;
+    position: relative;
+}
+
+.element {
+    background-color: #121212;
+    border-radius: 4px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    position: relative;
+    transition: all 0.2s ease;
+    min-height: 60px;
+    z-index: 1;
+}
+
+.element:hover {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 0 20px currentColor;
+}
+
+.element.empty {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.element-number {
+    font-size: 0.7rem;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.element-symbol {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 2px 0;
+}
+
+.element-name {
+    font-size: 0.65rem;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.element-mass {
+    font-size: 0.65rem;
+    margin-top: 2px;
+}
+
+/* Element type styles with glow effect */
+.alkali-metal {
+    border: 2px solid var(--alkali-metal);
+    box-shadow: 0 0 10px var(--alkali-metal-glow);
+}
+
+.alkali-metal .element-symbol {
+    text-shadow: 0 0 5px var(--alkali-metal);
+    color: var(--alkali-metal);
+}
+
+.alkaline-earth {
+    border: 2px solid var(--alkaline-earth);
+    box-shadow: 0 0 10px var(--alkaline-earth-glow);
+}
+
+.alkaline-earth .element-symbol {
+    text-shadow: 0 0 5px var(--alkaline-earth);
+    color: var(--alkaline-earth);
+}
+
+.transition-metal {
+    border: 2px solid var(--transition-metal);
+    box-shadow: 0 0 10px var(--transition-metal-glow);
+}
+
+.transition-metal .element-symbol {
+    text-shadow: 0 0 5px var(--transition-metal);
+    color: var(--transition-metal);
+}
+
+.post-transition-metal {
+    border: 2px solid var(--post-transition-metal);
+    box-shadow: 0 0 10px var(--post-transition-metal-glow);
+}
+
+.post-transition-metal .element-symbol {
+    text-shadow: 0 0 5px var(--post-transition-metal);
+    color: var(--post-transition-metal);
+}
+
+.metalloid {
+    border: 2px solid var(--metalloid);
+    box-shadow: 0 0 10px var(--metalloid-glow);
+}
+
+.metalloid .element-symbol {
+    text-shadow: 0 0 5px var(--metalloid);
+    color: var(--metalloid);
+}
+
+.nonmetal {
+    border: 2px solid var(--nonmetal);
+    box-shadow: 0 0 10px var(--nonmetal-glow);
+}
+
+.nonmetal .element-symbol {
+    text-shadow: 0 0 5px var(--nonmetal);
+    color: var(--nonmetal);
+}
+
+.halogen {
+    border: 2px solid var(--halogen);
+    box-shadow: 0 0 10px var(--halogen-glow);
+}
+
+.halogen .element-symbol {
+    text-shadow: 0 0 5px var(--halogen);
+    color: var(--halogen);
+}
+
+.noble-gas {
+    border: 2px solid var(--noble-gas);
+    box-shadow: 0 0 10px var(--noble-gas-glow);
+}
+
+.noble-gas .element-symbol {
+    text-shadow: 0 0 5px var(--noble-gas);
+    color: var(--noble-gas);
+}
+
+.lanthanide {
+    border: 2px solid var(--lanthanide);
+    box-shadow: 0 0 10px var(--lanthanide-glow);
+}
+
+.lanthanide .element-symbol {
+    text-shadow: 0 0 5px var(--lanthanide);
+    color: var(--lanthanide);
+}
+
+.actinide {
+    border: 2px solid var(--actinide);
+    box-shadow: 0 0 10px var(--actinide-glow);
+}
+
+.actinide .element-symbol {
+    text-shadow: 0 0 5px var(--actinide);
+    color: var(--actinide);
+}
+
+.unknown {
+    border: 2px solid var(--unknown);
+    box-shadow: 0 0 10px var(--unknown-glow);
+}
+
+.unknown .element-symbol {
+    text-shadow: 0 0 5px var(--unknown);
+    color: var(--unknown);
+}
+
+/* Print modal styles */
+.print-modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.print-modal-content {
+    background-color: #1e1e1e;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
+
+#confirmPrint {
+    background-color: #333;
+    color: white;
+    border: 2px solid #555;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+#confirmPrint:hover {
+    background-color: #444;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Legend styles */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 1400px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.legend-text {
+    font-size: 0.8rem;
+}
+
+/* Add blur effect on hover */
+.periodic-table::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(0px);
+    pointer-events: none;
+    transition: backdrop-filter 0.2s ease;
+    z-index: 0;
+}
+
+.periodic-table:has(.element:hover)::after {
+    backdrop-filter: blur(2px);
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+        overflow: visible !important;
+        position: relative;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+    }
+    
+    header, .print-modal, .legend {
+        display: none !important;
+    }
+    
+    .periodic-table {
+        width: 100%;
+        max-width: 100%;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+        margin: 0 auto;
+        display: grid !important;
+        grid-template-columns: repeat(18, 1fr) !important;
+        grid-gap: 3px !important;
+        overflow: visible !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    
+    .element {
+        background-color: #121212 !important;
+        color: white !important;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .element.empty {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: none !important;
+    }
+    
+    .element-symbol {
+        /* Preserve the colored text and glow */
+        text-shadow: 0 0 3px currentColor !important;
+    }
+    
+    /* Preserve element type colors and borders */
+    .alkali-metal {
+        border: 2px solid var(--alkali-metal) !important;
+        box-shadow: 0 0 8px var(--alkali-metal-glow) !important;
+    }
+    
+    .alkaline-earth {
+        border: 2px solid var(--alkaline-earth) !important;
+        box-shadow: 0 0 8px var(--alkaline-earth-glow) !important;
+    }
+    
+    .transition-metal {
+        border: 2px solid var(--transition-metal) !important;
+        box-shadow: 0 0 8px var(--transition-metal-glow) !important;
+    }
+    
+    .post-transition-metal {
+        border: 2px solid var(--post-transition-metal) !important;
+        box-shadow: 0 0 8px var(--post-transition-metal-glow) !important;
+    }
+    
+    .metalloid {
+        border: 2px solid var(--metalloid) !important;
+        box-shadow: 0 0 8px var(--metalloid-glow) !important;
+    }
+    
+    .nonmetal {
+        border: 2px solid var(--nonmetal) !important;
+        box-shadow: 0 0 8px var(--nonmetal-glow) !important;
+    }
+    
+    .halogen {
+        border: 2px solid var(--halogen) !important;
+        box-shadow: 0 0 8px var(--halogen-glow) !important;
+    }
+    
+    .noble-gas {
+        border: 2px solid var(--noble-gas) !important;
+        box-shadow: 0 0 8px var(--noble-gas-glow) !important;
+    }
+    
+    .lanthanide {
+        border: 2px solid var(--lanthanide) !important;
+        box-shadow: 0 0 8px var(--lanthanide-glow) !important;
+    }
+    
+    .actinide {
+        border: 2px solid var(--actinide) !important;
+        box-shadow: 0 0 8px var(--actinide-glow) !important;
+    }
+    
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+    
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: visible !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+    }
+}
+
+/* A3 specific adjustments */
+@media print and (min-width: 297mm) {
+    .periodic-table {
+        transform: translate(-50%, -50%) scale(1.5);
+        max-width: 100%;
+        margin: 0 auto;
+    }
+} 
